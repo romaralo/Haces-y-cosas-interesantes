@@ -1,0 +1,17 @@
+% Especificar los parámetros
+nPixeles = 1000;         % número de píxeles en cada dimensión de la imagen
+desviacion = 100;        % desviación estándar del haz gaussiano
+
+% Generar una cuadrícula de coordenadas
+[x,y] = meshgrid(-(nPixeles/2):(nPixeles/2)-1, -(nPixeles/2):(nPixeles/2)-1);
+
+% Generar un haz gaussiano
+haz = exp(-(x.^2 + y.^2)/(2*desviacion^2));
+
+% Agregar ruido gaussiano
+ruido = 0.05*randn(size(haz)); % ruido gaussiano con amplitud 0.1
+hazConRuido = haz + ruido;
+
+% Mostrar la imagen del haz gaussiano con ruido
+figure(1)
+imshow(hazConRuido);
