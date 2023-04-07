@@ -1,0 +1,18 @@
+% Definir el tamaño de la cuadrícula y la desviación estándar del haz gaussiano
+grid_size = 2500;
+sigma = 50;
+
+% Crear una cuadrícula de puntos en el espacio
+[x,y] = meshgrid(1:grid_size);
+
+% Calcular la distancia de cada punto a la mitad de la cuadrícula
+x0 = grid_size/2;
+y0 = grid_size/2;
+r = sqrt((x-x0).^2 + (y-y0).^2);
+
+% Calcular la intensidad del haz gaussiano en cada punto
+gaussian_beam = exp(-r.^2/(2*sigma^2));
+
+% Mostrar la imagen del haz gaussiano
+figure(1)
+imshow(gaussian_beam);
